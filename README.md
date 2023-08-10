@@ -1,3 +1,32 @@
+daftar username : 
+1. Admin (email : admin@argon.com , password : secret),
+2. Kepala Cabang (email : kepalacabang@gmail.com , password : secret),
+3. Kepala Pusat 1 (email : kepalapusat@gmail.com , password : secret),
+4. Kepala Pusat 2 (email : kepalapusat2@gmail.com , password : secret),
+
+database version : PHPMyAdmin 5.2.1
+
+php version : PHP 8.2.4
+
+framework : laravel 
+framework version : 10.18.0
+
+panduan penggunaan 
+1. download file
+2. composer install
+3. buat database terlebih dahulu dengan nama techincal_fullstack_sekawan
+4. setting env dengan DB_DATABASE=techincal_fullstack_sekawan
+5. lakukan php artisan migrate --seed
+6. php artisan serve
+7. admin masuk ke dalam website, menginputkan data transaksi
+8. transaksi akan masuk ke kepala cabang dan pusat
+9. kepala cabang masuk ke dalam website, kemudian memilih opsi apakah diterima atau ditolak
+10. kepala pusat menerima transaksi, kemudian memilih opsi apakah diterima atau ditolak
+11. jika kepala cabang menerima, dan kepala pusat menerima maka statusnya akan diterima
+12. jika kepala cabang menerima, dan kepala pusat menolak maka statusnya akan ditolak
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
