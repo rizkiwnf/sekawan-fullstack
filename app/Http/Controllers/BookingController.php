@@ -102,7 +102,8 @@ class BookingController extends Controller
     public function cancelFirst(Request $request)
     {
         Booking::where('id', $request->booking_id)->update([
-            'status_first' => 2
+            'status_first' => 2, 
+            'status_final' => 2,
         ]);
 
         $booking = Booking::where('id', $request->booking_id)->first();
@@ -118,6 +119,7 @@ class BookingController extends Controller
 
     public function approveFinal(Request $request)
     {
+        
         Booking::where('id', $request->booking_id)->update([
             'status_final' => 1
         ]);

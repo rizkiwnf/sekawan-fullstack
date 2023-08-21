@@ -45,7 +45,9 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <p class="text-xs font-weight-bold mb-0">{{ $booking->user->firstname }} {{ $booking->user->lastname }}</p>
+                                                        <p class="text-xs font-weight-bold mb-0">
+                                                            {{ $booking->user->firstname }} {{ $booking->user->lastname }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </td>
@@ -53,13 +55,15 @@
                                                 <p class="text-xs font-weight-bold mb-0">{{ $booking->user->region }}</p>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0">{{ $booking->vehicle->name }} - {{ $booking->vehicle->plate }}</p>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $booking->vehicle->name }} -
+                                                    {{ $booking->vehicle->plate }}</p>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0">{{ $booking->pickup_date }} - {{ $booking->return_date }}</p>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $booking->pickup_date }} -
+                                                    {{ $booking->return_date }}</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                @if(Auth::user()->role == 3)
+                                                @if (Auth::user()->role == 3)
                                                     @if ($booking->status_first == 0)
                                                         <span class="badge badge-sm bg-gradient-warning">Pending</span>
                                                     @elseif($booking->status_first == 1)
@@ -76,15 +80,33 @@
                                                         <span class="badge badge-sm bg-gradient-danger">Ditolak</span>
                                                     @endif
                                                 @endif
-                                               
+
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                @if($booking->status_final == 0 | $booking->status_first == 0)
-                                                <button class="badge badge-sm bg-gradient-warning" data-toggle="modal"
-                                                    data-target="#updateBooking-{{ $booking->id }}">Proses</button>
+                                                @if (Auth::user()->role == 3)
+                                                    @if ($booking->status_first == 0)
+                                                        <button class="badge badge-sm bg-gradient-warning"
+                                                            data-toggle="modal"
+                                                            data-target="#updateBooking-{{ $booking->id }}">Proses</button>
+                                                    @else
+                                                        -
+                                                    @endif
                                                 @else
-                                                -
+                                                    @if ($booking->status_final == 0)
+                                                        <button class="badge badge-sm bg-gradient-warning"
+                                                            data-toggle="modal"
+                                                            data-target="#updateBooking-{{ $booking->id }}">Proses</button>
+                                                    @else
+                                                        -
+                                                    @endif
                                                 @endif
+{{-- 
+                                                @if ($booking->status_final == 0 && $booking->status_first == 0)
+                                                    <button class="badge badge-sm bg-gradient-warning" data-toggle="modal"
+                                                        data-target="#updateBooking-{{ $booking->id }}">Proses</button>
+                                                    @elseid()
+                                                    -
+                                                @endif --}}
                                             </td>
                                         </tr>
                                     @endforeach

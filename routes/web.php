@@ -26,6 +26,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\VehicleController;
 
 Route::get('/', function () {
 	return redirect('/dashboard');
@@ -45,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/booking/store', [BookingController::class, 'store'])->name('booking-add');
 	Route::post('/booking/update', [BookingController::class, 'update'])->name('booking-update');
 	Route::post('/booking/delete', [BookingController::class, 'delete'])->name('booking-delete');
+	
+	Route::get('/vehicle', [VehicleController::class, 'index'])->name('vehicle');	
+	Route::post('/vehicle/add', [VehicleController::class, 'add'])->name('vehicle-add');
 
 	Route::get('/bookings', [BookingController::class, 'bookingByUser'])->name('bookings');
 	Route::post('/bookings/approve', [BookingController::class, 'approveFirst'])->name('bookingsApproveFirst');
